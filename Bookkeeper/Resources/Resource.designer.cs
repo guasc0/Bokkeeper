@@ -45,7 +45,7 @@ namespace Bookkeeper
 		{
 			
 			// aapt resource value: 0x7f020000
-			public const int Main = 2130837504;
+			public const int MainMenu = 2130837504;
 			
 			static Layout()
 			{
