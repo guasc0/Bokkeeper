@@ -1,6 +1,7 @@
 ﻿using Android.App;
 using Android.Widget;
 using Android.OS;
+using Android.Content;
 
 namespace Bookkeeper
 {
@@ -13,6 +14,14 @@ namespace Bookkeeper
 
 			// Set our view from the "main" layout resource
 			SetContentView(Resource.Layout.MainMenu);
+
+			Button b1 = FindViewById<Button>(Resource.Id.event_btn);
+			b1.Click += delegate {Intent i = new Intent(this, typeof(NewEventActivity)); StartActivity(i);};
+
+			Button b2 = FindViewById<Button>(Resource.Id.view_event_btn);
+			{ 
+				
+			}
 		}
 	}
 }
