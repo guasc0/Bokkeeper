@@ -19,9 +19,7 @@ namespace Bookkeeper
 			b1.Click += delegate {Intent i = new Intent(this, typeof(NewEventActivity)); StartActivity(i);};
 
 			Button b2 = FindViewById<Button>(Resource.Id.view_event_btn);
-			{ 
-				
-			}
+
 		}
 	}
 }

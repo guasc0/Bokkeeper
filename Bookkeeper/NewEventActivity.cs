@@ -13,7 +13,7 @@ using Android.Widget;
 
 namespace Bookkeeper
 {
-	[Activity(Label = "NewEventActivity")]
+	[Activity(Label = "Ny händelse")]
 	public class NewEventActivity : Activity
 	{
 		protected override void OnCreate(Bundle savedInstanceState)
@@ -21,6 +21,8 @@ namespace Bookkeeper
 			base.OnCreate(savedInstanceState);
 			SetContentView(Resource.Layout.NewEvent);
 			// Create your application here
+
+
 		}
 
 
