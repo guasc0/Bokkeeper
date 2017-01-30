@@ -47,11 +47,8 @@ namespace Bookkeeper
 			// aapt resource value: 0x7f04000d
 			public const int To_from_textview = 2130968589;
 			
-			// aapt resource value: 0x7f040013
-			public const int add_event_button = 2130968595;
-			
 			// aapt resource value: 0x7f040014
-			public const int button1 = 2130968596;
+			public const int add_event_button = 2130968596;
 			
 			// aapt resource value: 0x7f040005
 			public const int checkbox_income = 2130968581;
@@ -63,7 +60,7 @@ namespace Bookkeeper
 			public const int create_report_btn = 2130968578;
 			
 			// aapt resource value: 0x7f040007
-			public const int date_text_view = 2130968583;
+			public const int date_button = 2130968583;
 			
 			// aapt resource value: 0x7f040008
 			public const int description_text_view = 2130968584;
@@ -97,6 +94,9 @@ namespace Bookkeeper
 			
 			// aapt resource value: 0x7f04000f
 			public const int total_amount_textview = 2130968591;
+			
+			// aapt resource value: 0x7f040013
+			public const int total_amount_without_tax = 2130968595;
 			
 			// aapt resource value: 0x7f04000b
 			public const int type_spinner = 2130968587;
