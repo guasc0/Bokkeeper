@@ -1,34 +1,33 @@
 ﻿using System;
+using SQLite;
+
 namespace Bookkeeper
 {
 	public class Entry
 	{
+		[PrimaryKey, AutoIncrement]
+		public int Id { get; private set;}
+		public bool Income { get; set;}
+		public int Ammount { get; set;}
+		public DateTime Date { get; set;}
+		public string Description { get; set;}
+		public int TypeId { get; set;}
+		public int AccountId { get; set;}
+		public int TaxRateId { get; set;}
+		//public bool income { get; set;}
 
-		public bool income;
-		private int ammount;
-		private int date;
-		private int totalAmmount;
-		private string description;
 
-		public bool Income 
-		{ 
-			set { income = value;}
-		}
 
-		public int Ammount 
+		public Entry()
 		{
-			get { return ammount; }
-			set { ammount = value; }
+			
+
 		}
 
-
-		public Entry(int ammount, int date, int totalAmmount, string description)
+		public override string ToString()
 		{
-			this.ammount = ammount;
-			this.date = date;
-			this.totalAmmount = totalAmmount;
-			this.description = description;
-		
+			return string.Format("[Entry: Description = {0}, Ammount = {1}]", Description, Ammount);
 		}
+
 	}
 }
