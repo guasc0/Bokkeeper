@@ -20,7 +20,6 @@ namespace Bookkeeper
 	{
 		Account ac;
 		TaxRate tx;
-		Account moneyAc;
 		TextView dateDisplay;
 		Button dateSelectButton;
 		bool income = true;
@@ -112,10 +111,10 @@ namespace Bookkeeper
 		{
 			//sätts inte utan att man trycker på inkomst/utgift först. NullPointer
 
-			tx = BookKeeperManager.Instance.TaxRates[taxSpinner.SelectedItemPosition];
-			moneyAc = BookKeeperManager.Instance.MoneyAccount[accountSpinner.SelectedItemPosition];
+			tx = BookKeeperManager.Instance.getTaxRates()[taxSpinner.SelectedItemPosition];
+			moneyAccount = ((Account)accountSpinner.SelectedItem).Number;
 
-			moneyAccount = moneyAc.Number;
+
 
 			//Värden
 			taxRate = tx.Tax;
@@ -124,21 +123,21 @@ namespace Bookkeeper
 
 			if (income)
 			{
-				ac = BookKeeperManager.Instance.IncomeAccount[accountSpinner.SelectedItemPosition];
+				ac = BookKeeperManager.Instance.getAccounts("income")[accountSpinner.SelectedItemPosition];
 			}
 			else
 			{ 
-				ac = BookKeeperManager.Instance.ExpenseAccount[accountSpinner.SelectedItemPosition];
+				ac = BookKeeperManager.Instance.getAccounts("expense")[accountSpinner.SelectedItemPosition];
 			}
 
-			typeAccount = ac.Number;
+			typeAccount = ((Account)accountSpinner.SelectedItem).Number;
 		
 		}
 
 		public void setTypeSpinner() 
 		{ 
 			ArrayAdapter typeAdapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleSpinnerItem,
-			                                            BookKeeperManager.Instance.MoneyAccount);
+			                                            BookKeeperManager.Instance.getAccounts("MoneyAccount"));
 			typeAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
 			typeSpinner.Adapter = typeAdapter;
 
@@ -148,30 +147,19 @@ namespace Bookkeeper
 		public void setTaxSpinner()
 		{
 			ArrayAdapter taxAdapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleSpinnerItem,
-													   BookKeeperManager.Instance.TaxRates);
+			                                           BookKeeperManager.Instance.getTaxRates());
 			taxAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
 			taxSpinner.Adapter = taxAdapter;
+		
+	}
 
 
-		}
-
-		/*public void setStartAccount() 
-		{ 
-			ArrayAdapter incomeAdapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleSpinnerItem,
-			                                              BookKeeperManager.Instance.IncomeAccount);
-			incomeAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
-			accountSpinner.Adapter = incomeAdapter;
-
-			accountSpinner.Adapter = incomeAdapter;
-			ac = BookKeeperManager.Instance.IncomeAccount[accountSpinner.SelectedItemPosition];
-		}*/
-
-		public void setAdapter(bool b) 
+	public void setAdapter(bool b) 
 		{
 			if (b)
 			{
 				ArrayAdapter incomeAdapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleSpinnerItem,
-				                                              BookKeeperManager.Instance.IncomeAccount);
+				                                              BookKeeperManager.Instance.getAccounts("income"));
 				incomeAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
 
 				//OBS!!!!
@@ -182,7 +170,7 @@ namespace Bookkeeper
 			}
 			else { 
 				ArrayAdapter incomeAdapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleSpinnerItem,
-				                                              BookKeeperManager.Instance.ExpenseAccount);
+				                                              BookKeeperManager.Instance.getAccounts("expense"));
 				incomeAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
 
 				accountSpinner.Adapter = incomeAdapter;

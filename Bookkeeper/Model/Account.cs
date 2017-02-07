@@ -2,7 +2,7 @@
 using SQLite;
 namespace Bookkeeper
 {
-	public class Account
+	public class Account : Java.Lang.Object
 	{
 		[PrimaryKey]
 		public int Number { get; set; }

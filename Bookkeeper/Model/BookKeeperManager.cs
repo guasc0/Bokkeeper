@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Android.Widget;
 using SQLite;
+using System.Linq;
 
 namespace Bookkeeper
 {
@@ -9,11 +10,12 @@ namespace Bookkeeper
 	public class BookKeeperManager
 	{
 		public List<Entry> Entries { get; private set;}
-		public List<TaxRate> TaxRates { get; private set;}
+		//public List<TaxRate> TaxRates { get; private set;}
 		public List<Account> MoneyAccount { get; private set;}
 		public List<Account> IncomeAccount { get; private set;}
 		public List<Account> ExpenseAccount { get; private set;}
 
+		SQLiteConnection db;
 
 		string pathToDb = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
 
@@ -22,30 +24,56 @@ namespace Bookkeeper
 
 		private BookKeeperManager()
 		{
-			SQLiteConnection db = new SQLiteConnection(pathToDb);
+			db = new SQLiteConnection(pathToDb + @"\database.db");
 
 			db.CreateTable<Entry>();
 			db.CreateTable<Account>();
 			db.CreateTable<TaxRate>();
 
-			Entries = new List<Entry>();
+			if (!db.Table<Account>().Any()) 
+			{ 
+				db.Insert(new Account { Name = "Fotbollsskor", Type = "income", Number = 3020 });
+				db.Insert(new Account { Name = "Båt", Type = "income", Number = 3001 });
+				db.Insert(new Account { Name = "Cykel", Type = "income", Number = 3002 });
 
-			TaxRates = new List<TaxRate> { new TaxRate { Tax = 0.06 },
-				{ new TaxRate { Tax = 0.12 } },
-				{ new TaxRate { Tax = 0.25 } } };
+				db.Insert(new Account { Name = "Virke", Type = "expense", Number = 2000 });
+				db.Insert(new Account { Name = "Färg", Type = "expense", Number = 2001 });
+				db.Insert(new Account { Name = "Verktyg", Type = "expense", Number = 2002 });
 
-			IncomeAccount = new List<Account> { new Account { Name = "Fotbollsskor", Type = "income", Number = 3020 },
-				{ new Account { Name = "Båt", Type = "income", Number = 3001 } },
-				{ new Account { Name = "Cykel", Type = "income", Number = 3002 } } };
+				db.Insert(new Account { Name = "Kassa", Type = "MoneyAccount", Number = 1910});
 
-			ExpenseAccount = new List<Account> { new Account { Name = "Virke", Type = "outcome", Number = 2000 },
-				 { new Account { Name = "Färg", Type = "outcome", Number = 2001 } },
-				 { new Account { Name = "Verktyg", Type = "outcome", Number = 2002 } } };
+				db.Insert(new TaxRate { Tax = 0.06 });
+				db.Insert(new TaxRate { Tax = 0.12 });
+				db.Insert(new TaxRate { Tax = 0.25 });
 
-			MoneyAccount = new List<Account> { new Account { Name = "Kassa", Type = "MoneyAccount", Number = 1910 },
-				 { new Account { Name = "Skit", Type = "MoneyAccount", Number = 2023 } } };
-		
+
+			}
 		}
+
+		public List<Account> getAccounts(string type) 
+		{ 
+			return db.Table<Account>().Where(Account => Account.Type.Equals(type)).ToList();
+
+		}
+
+		public Account getOneAccount(int id) 
+		{
+			return db.Get<Account>(id);
+
+		}
+
+		public TaxRate getTaxRate(int id) 
+		{
+			return db.Get<TaxRate>(id);
+		}
+
+		public List<TaxRate> getTaxRates() 
+		{
+			return db.Table<TaxRate>().ToList();
+		}
+
+
+
 
 		public static BookKeeperManager Instance 
 		{ 
@@ -62,8 +90,7 @@ namespace Bookkeeper
 
 		public void AddEntry(Entry e) 
 		{
-			SQLiteConnection db = new SQLiteConnection(pathToDb);
-			Entries.Add(e);
+			//ntries.Add(e);
 			db.Insert(e);
 			Console.WriteLine(e.ToString());
 
