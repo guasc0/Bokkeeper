@@ -5,11 +5,9 @@ namespace Bookkeeper
 	public class Account
 	{
 		[PrimaryKey]
+		public int Number { get; set; }
 		public string Name { get; set;}
-		public int Number { get; set;}
 		public string Type { get; set;}
-
-
 
 		public Account()
 		{
@@ -20,7 +18,6 @@ namespace Bookkeeper
 		{
 			return string.Format("{0} ({1})", Name, Number);
 		}
-
 
 	}
 }

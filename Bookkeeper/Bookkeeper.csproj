@@ -60,6 +60,7 @@
     <Compile Include="Model\BookKeeperManager.cs" />
     <Compile Include="Model\TaxRate.cs" />
     <Compile Include="Model\Account.cs" />
+    <Compile Include="EntryListActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -71,6 +72,7 @@
     <AndroidResource Include="Resources\layout\MainMenu.axml" />
     <AndroidResource Include="Resources\values\Strings.xml" />
     <AndroidResource Include="Resources\layout\NewEvent.axml" />
+    <AndroidResource Include="Resources\layout\EntryList.axml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\mipmap-hdpi\" />

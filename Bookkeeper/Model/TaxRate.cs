@@ -15,7 +15,7 @@ namespace Bookkeeper
 
 		public override string ToString()
 		{
-			return string.Format("% " + Tax);
+			return string.Format(Tax * 100 + "%");
 		}
 	}
 }

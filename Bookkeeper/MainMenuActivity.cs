@@ -16,8 +16,10 @@ namespace Bookkeeper
 			SetContentView(Resource.Layout.MainMenu);
 
 			Button b1 = FindViewById<Button>(Resource.Id.event_btn);
-			b1.Click += delegate{ Intent i = new Intent(this, typeof(NewEventActivity)); StartActivity(i); };
+			Button b2 = FindViewById<Button>(Resource.Id.view_event_btn);
 
+			b1.Click += delegate{ Intent i = new Intent(this, typeof(NewEventActivity)); StartActivity(i); };
+			b2.Click += delegate { Intent j = new Intent(this, typeof(EntryListActivity)); StartActivity(j); };
 		}
 	}
 }

@@ -47,8 +47,8 @@ namespace Bookkeeper
 			// aapt resource value: 0x7f04000d
 			public const int To_from_textview = 2130968589;
 			
-			// aapt resource value: 0x7f040014
-			public const int add_event_button = 2130968596;
+			// aapt resource value: 0x7f040016
+			public const int add_event_button = 2130968598;
 			
 			// aapt resource value: 0x7f04000f
 			public const int amount_edit_text = 2130968591;
@@ -80,6 +80,9 @@ namespace Bookkeeper
 			// aapt resource value: 0x7f040010
 			public const int linearLayout3 = 2130968592;
 			
+			// aapt resource value: 0x7f040013
+			public const int linearLayout4 = 2130968595;
+			
 			// aapt resource value: 0x7f040004
 			public const int radioGroup1 = 2130968580;
 			
@@ -95,14 +98,17 @@ namespace Bookkeeper
 			// aapt resource value: 0x7f04000e
 			public const int to_from_spinner = 2130968590;
 			
-			// aapt resource value: 0x7f040013
-			public const int total_amount_without_tax = 2130968595;
+			// aapt resource value: 0x7f040014
+			public const int total_amount_without_tax = 2130968596;
 			
 			// aapt resource value: 0x7f04000b
 			public const int type_spinner = 2130968587;
 			
 			// aapt resource value: 0x7f04000a
 			public const int type_textview = 2130968586;
+			
+			// aapt resource value: 0x7f040015
+			public const int updated_ammount = 2130968597;
 			
 			// aapt resource value: 0x7f040001
 			public const int view_event_btn = 2130968577;
@@ -121,10 +127,13 @@ namespace Bookkeeper
 		{
 			
 			// aapt resource value: 0x7f020000
-			public const int MainMenu = 2130837504;
+			public const int EntryList = 2130837504;
 			
 			// aapt resource value: 0x7f020001
-			public const int NewEvent = 2130837505;
+			public const int MainMenu = 2130837505;
+			
+			// aapt resource value: 0x7f020002
+			public const int NewEvent = 2130837506;
 			
 			static Layout()
 			{

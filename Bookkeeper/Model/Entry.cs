@@ -13,10 +13,7 @@ namespace Bookkeeper
 		public string Description { get; set;}
 		public int TypeId { get; set;}
 		public int AccountId { get; set;}
-		public int TaxRateId { get; set;}
-		//public bool income { get; set;}
-
-
+		public double TaxRateId { get; set;}
 
 		public Entry()
 		{
@@ -26,7 +23,9 @@ namespace Bookkeeper
 
 		public override string ToString()
 		{
-			return string.Format("[Entry: Description = {0}, Ammount = {1}]", Description, Ammount);
+			return string.Format("[Entry: Id={0}, Income={1}, Ammount={2}, Date={3}, Description={4}, TypeId={5}," +
+			                     " AccountId={6}, TaxRateId={7}]", Id, Income, Ammount, Date, Description, TypeId,
+			                     AccountId, TaxRateId);
 		}
 
 	}
