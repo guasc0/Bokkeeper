@@ -10,27 +10,19 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using SQLite;
 
 namespace Bookkeeper
 {
-
-	[Activity(Label = "EntryList")]
-	public class EntryListActivity : Activity
+	[Activity(Label = "CreateReportActivity")]
+	public class CreateReportActivity : Activity
 	{
-
-		ListView entryList;
-
+		TextView taxReport;
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
+			
 			base.OnCreate(savedInstanceState);
-
-			SetContentView(Resource.Layout.EntryList);
-
-			entryList = FindViewById<ListView>(Resource.Id.entry_list);
-			entryList.Adapter = new EntryAdapter(this);
-
-
+			SetContentView(Resource.Layout.TaxReport);
+			// Create your application here
 		}
 	}
 }

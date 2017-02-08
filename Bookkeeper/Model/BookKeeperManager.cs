@@ -9,11 +9,11 @@ namespace Bookkeeper
 
 	public class BookKeeperManager
 	{
-		public List<Entry> Entries { get; private set;}
+		//public List<Entry> Entries { get; private set;}
 		//public List<TaxRate> TaxRates { get; private set;}
-		public List<Account> MoneyAccount { get; private set;}
-		public List<Account> IncomeAccount { get; private set;}
-		public List<Account> ExpenseAccount { get; private set;}
+		//public List<Account> MoneyAccount { get; private set;}
+		//public List<Account> IncomeAccount { get; private set;}
+		//public List<Account> ExpenseAccount { get; private set;}
 
 		SQLiteConnection db;
 
@@ -46,20 +46,22 @@ namespace Bookkeeper
 				db.Insert(new TaxRate { Tax = 0.12 });
 				db.Insert(new TaxRate { Tax = 0.25 });
 
-
 			}
 		}
 
 		public List<Account> getAccounts(string type) 
 		{ 
 			return db.Table<Account>().Where(Account => Account.Type.Equals(type)).ToList();
-
 		}
 
 		public Account getOneAccount(int id) 
 		{
 			return db.Get<Account>(id);
+		}
 
+		public List<TaxRate> getTaxRates()
+		{
+			return db.Table<TaxRate>().ToList();
 		}
 
 		public TaxRate getTaxRate(int id) 
@@ -67,11 +69,10 @@ namespace Bookkeeper
 			return db.Get<TaxRate>(id);
 		}
 
-		public List<TaxRate> getTaxRates() 
+		public List<Entry> getEntries() 
 		{
-			return db.Table<TaxRate>().ToList();
+			return db.Table<Entry>().ToList();
 		}
-
 
 
 
@@ -90,12 +91,15 @@ namespace Bookkeeper
 
 		public void AddEntry(Entry e) 
 		{
-			//ntries.Add(e);
+			
 			db.Insert(e);
 			Console.WriteLine(e.ToString());
-
-
 		}
+
+		/*public string getTaxRaport() 
+		{ 
+			
+		}*/
 
 
 	}

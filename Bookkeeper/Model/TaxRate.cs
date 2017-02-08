@@ -2,9 +2,9 @@
 using SQLite;
 namespace Bookkeeper
 {
-	public class TaxRate
+	public class TaxRate : Java.Lang.Object
 	{
-		[PrimaryKey, AutoIncrement]
+		[PrimaryKey, AutoIncrement, Column("_Id")]
 		public int Id { get; set;}
 		public double Tax { get; set;}
 

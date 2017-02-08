@@ -3,9 +3,9 @@ using SQLite;
 
 namespace Bookkeeper
 {
-	public class Entry
+	public class Entry : Java.Lang.Object
 	{
-		[PrimaryKey, AutoIncrement]
+		[PrimaryKey, AutoIncrement, Column("_Id")]
 		public int Id { get; private set;}
 		public bool Income { get; set;}
 		public int Ammount { get; set;}

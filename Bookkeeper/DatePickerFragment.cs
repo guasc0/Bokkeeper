@@ -42,5 +42,10 @@ namespace Bookkeeper
 			Log.Debug(TAG, selectedDate.ToLongDateString());
 			_dateSelectedHandler(selectedDate);
 		}
+
+		public override string ToString()
+		{
+			return string.Format("yyyy-MM-dd");
+		}
 	}
 }

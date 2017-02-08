@@ -20,27 +20,20 @@ namespace Bookkeeper
 	{
 		Account ac;
 		TaxRate tx;
+		DateTime dateTime;
 		TextView dateDisplay;
-		Button dateSelectButton;
-		bool income = true;
+		EditText description, ammount, totalAmmountWithoutTax;
+		Button dateSelectButton, addEntry;
 		RadioButton checkIncome;
 		RadioButton checkOutcome;
-		Button addEntry;
 
-		EditText description;
 		string stDescription = "";
-		EditText ammount;
-		int intAmmount;
-		int typeAccount;
-		int moneyAccount;
+		bool income = true;
+		int intAmmount, typeAccount, moneyAccount; 
 		double taxRate;
 
-		EditText totalAmmountWithoutTax;
-		DateTime dateTime;
-
-		Spinner accountSpinner;
-		Spinner typeSpinner;
-		Spinner taxSpinner;
+		Spinner accountSpinner, typeSpinner, taxSpinner;
+		 
 
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
@@ -63,15 +56,14 @@ namespace Bookkeeper
 
 			//setStartAccount();
 			setTaxSpinner();
-			setTypeSpinner();
-			setAdapter(income);
+			setTypeSpinner(income);
+			setMoneyAccountSpinner();
 
 			checkIncome.Click += delegate
 			{
 				if (checkIncome.Checked)
 				{
-					Console.WriteLine(income = true);
-					setAdapter(income);
+					setTypeSpinner(income = true);
 				}
 			};
 
@@ -79,8 +71,7 @@ namespace Bookkeeper
 			{
 				if (checkOutcome.Checked)
 				{
-					Console.WriteLine(income = false);
-					setAdapter(income);
+					setTypeSpinner(income = false);
 				}
 			};
 
@@ -100,24 +91,18 @@ namespace Bookkeeper
 		{
 			DatePickerFragment frag = DatePickerFragment.NewInstance(delegate (DateTime time)
 																	 {
-				dateDisplay.Text = time.ToString("yyyy-MM-dd");
-																		 dateTime = time;
+																		dateDisplay.Text = time.ToString("yyyy-MM-dd");
+																		dateTime = time;
 			
-			});
+																	  });
 			frag.Show(FragmentManager, DatePickerFragment.TAG);
 		}
 
 		public void setValues() 
 		{
-			//sätts inte utan att man trycker på inkomst/utgift först. NullPointer
-
 			tx = BookKeeperManager.Instance.getTaxRates()[taxSpinner.SelectedItemPosition];
-			moneyAccount = ((Account)accountSpinner.SelectedItem).Number;
-
-
-
-			//Värden
 			taxRate = tx.Tax;
+			moneyAccount = ((Account)accountSpinner.SelectedItem).Number;
 			stDescription = description.Text;
 			intAmmount = Int32.Parse(ammount.Text);
 
@@ -134,7 +119,7 @@ namespace Bookkeeper
 		
 		}
 
-		public void setTypeSpinner() 
+		public void setMoneyAccountSpinner() 
 		{ 
 			ArrayAdapter typeAdapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleSpinnerItem,
 			                                            BookKeeperManager.Instance.getAccounts("MoneyAccount"));
@@ -154,7 +139,7 @@ namespace Bookkeeper
 	}
 
 
-	public void setAdapter(bool b) 
+	public void setTypeSpinner(bool b) 
 		{
 			if (b)
 			{
@@ -162,8 +147,6 @@ namespace Bookkeeper
 				                                              BookKeeperManager.Instance.getAccounts("income"));
 				incomeAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
 
-				//OBS!!!!
-				//hämtar kontonr endast första gången inte när det ändras i spinnern.
 				accountSpinner.Adapter = incomeAdapter;
 
 
@@ -178,6 +161,11 @@ namespace Bookkeeper
 
 			}
 		
+		}
+
+		public void calculateTotalSum() 
+		{
+			
 		}
 
 	}
