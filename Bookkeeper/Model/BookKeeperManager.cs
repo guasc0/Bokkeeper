@@ -22,6 +22,8 @@ namespace Bookkeeper
 
 		private static BookKeeperManager instance;
 
+
+
 		private BookKeeperManager()
 		{
 			db = new SQLiteConnection(pathToDb + @"\database.db");
@@ -96,11 +98,19 @@ namespace Bookkeeper
 			Console.WriteLine(e.ToString());
 		}
 
-		/*public string getTaxRaport() 
-		{ 
-			
-		}*/
+		public string getTaxReport() 
+		{
+			var taxReport = BookKeeperManager.instance.getEntries().Select(e => string.Format(e.Date.ToString("yyyy-MM-dd")
+			                                                                                  + " "
+																							  + e.Description + " " +
+			                                                                                  (e.isIncome ? 
+			                                                                                   (e.Ammount * e.TaxRateId)
+			                                                                                   :(e.Ammount * e.TaxRateId)*-1)));
+
+			return string.Join("\n", taxReport);
+		}
 
 
 	}
 }
+

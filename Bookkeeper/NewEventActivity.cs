@@ -15,7 +15,7 @@ using SQLite;
 
 namespace Bookkeeper
 {
-	[Activity(Label = "Ny händelse")]
+	[Activity(Label = "New Entry")]
 	public class NewEventActivity : Activity
 	{
 		Account ac;
@@ -79,7 +79,7 @@ namespace Bookkeeper
 			{
 				setValues();
 				Entry e = new Entry { Description = stDescription, Ammount = intAmmount, AccountId = moneyAccount ,
-										TypeId = typeAccount, Date = dateTime, Income = income, TaxRateId = taxRate};
+										TypeId = typeAccount, Date = dateTime, isIncome = income, TaxRateId = taxRate};
 
 				BookKeeperManager.Instance.AddEntry(e);
 

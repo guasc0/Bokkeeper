@@ -15,7 +15,7 @@ using SQLite;
 namespace Bookkeeper
 {
 
-	[Activity(Label = "EntryList")]
+	[Activity(Label = "Entry List")]
 	public class EntryListActivity : Activity
 	{
 
@@ -29,7 +29,6 @@ namespace Bookkeeper
 
 			entryList = FindViewById<ListView>(Resource.Id.entry_list);
 			entryList.Adapter = new EntryAdapter(this);
-
 
 		}
 	}

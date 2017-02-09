@@ -34,8 +34,6 @@ namespace Bookkeeper
 		{
 			this.context = activity;
 
-
-
 		}
 
 		public override int Count
@@ -60,11 +58,7 @@ namespace Bookkeeper
 		{
 			View view = convertView ?? context.LayoutInflater.Inflate(Resource.Layout.Book_list_item, parent, false);
 
-			//t1.FindViewById<TextView>(Resource.Id.ammount);
-			/*if (Entries[position].Income) 
-			{
-				t1.SetTextColor(Resource.GetColor)
-			}*/
+
 			view.FindViewById<TextView>(Resource.Id.date).Text = Entries[position].Date.ToString("yyyy-MM-dd");
 			view.FindViewById<TextView>(Resource.Id.description).Text = Entries[position].Description;
 			view.FindViewById<TextView>(Resource.Id.ammount).Text = Entries[position].Ammount + "";

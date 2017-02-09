@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using SQLite;
 
 namespace Bookkeeper
@@ -7,7 +7,7 @@ namespace Bookkeeper
 	{
 		[PrimaryKey, AutoIncrement, Column("_Id")]
 		public int Id { get; private set;}
-		public bool Income { get; set;}
+		public bool isIncome { get; set;}
 		public int Ammount { get; set;}
 		public DateTime Date { get; set;}
 		public string Description { get; set;}
@@ -24,7 +24,7 @@ namespace Bookkeeper
 		public override string ToString()
 		{
 			return string.Format("[Entry: Id={0}, Income={1}, Ammount={2}, Date={3}, Description={4}, TypeId={5}," +
-			                     " AccountId={6}, TaxRateId={7}]", Id, Income, Ammount, Date, Description, TypeId,
+			                     " AccountId={6}, TaxRateId={7}]", Id, isIncome, Ammount, Date, Description, TypeId,
 			                     AccountId, TaxRateId);
 		}
 

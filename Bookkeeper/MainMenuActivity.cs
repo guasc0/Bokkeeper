@@ -5,7 +5,7 @@ using Android.Content;
 
 namespace Bookkeeper
 {
-	[Activity(Label = "Bookkeeper", MainLauncher = true)]
+	[Activity(Label = "BookKeeper", MainLauncher = true)]
 	public class MainActivity : Activity
 	{
 		protected override void OnCreate(Bundle savedInstanceState)

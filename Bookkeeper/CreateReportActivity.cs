@@ -13,16 +13,17 @@ using Android.Widget;
 
 namespace Bookkeeper
 {
-	[Activity(Label = "CreateReportActivity")]
+	[Activity(Label = "Activity Reports")]
 	public class CreateReportActivity : Activity
 	{
 		TextView taxReport;
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
-			
 			base.OnCreate(savedInstanceState);
 			SetContentView(Resource.Layout.TaxReport);
-			// Create your application here
+
+			taxReport = FindViewById<TextView>(Resource.Id.report);
+			taxReport.Text = BookKeeperManager.Instance.getTaxReport();
 		}
 	}
 }
