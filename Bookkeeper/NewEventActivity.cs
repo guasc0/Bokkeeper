@@ -25,12 +25,12 @@ namespace Bookkeeper
 		EditText description, ammount;
 		Button dateSelectButton, addEntry;
 		RadioButton checkIncome;
-		RadioButton checkOutcome;
+		RadioButton checkExpense;
 
 		string stDescription = "";
 		bool income = true;
 		int intAmmount, typeAccount, moneyAccount; 
-		double taxRate, tempTax;
+		double taxRate;
 
 		Spinner accountSpinner, typeSpinner, taxSpinner;
 		 
@@ -49,7 +49,7 @@ namespace Bookkeeper
 			dateSelectButton.Click += DateSelect_OnClick;
 
 			checkIncome = FindViewById<RadioButton>(Resource.Id.checkbox_income);
-			checkOutcome = FindViewById<RadioButton>(Resource.Id.checkbox_outcome);
+			checkExpense = FindViewById<RadioButton>(Resource.Id.checkbox_expense);
 			addEntry = FindViewById<Button>(Resource.Id.add_event_button);
 			description = FindViewById<EditText>(Resource.Id.description_text_view);
 			ammount = FindViewById<EditText>(Resource.Id.amount_edit_text);
@@ -66,9 +66,9 @@ namespace Bookkeeper
 				}
 			};
 
-			checkOutcome.Click += delegate
+			checkExpense.Click += delegate
 			{
-				if (checkOutcome.Checked)
+				if (checkExpense.Checked)
 				{
 					setTypeSpinner(income = false);
 				}
@@ -86,6 +86,7 @@ namespace Bookkeeper
 				dateDisplay.Text = "Datum";
 				description.Text = "";
 				ammount.Text = "";
+				Toast.MakeText(this, "You added a new entry", ToastLength.Long).Show();
 
 			};
 

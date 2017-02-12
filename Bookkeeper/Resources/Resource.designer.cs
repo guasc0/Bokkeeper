@@ -56,11 +56,11 @@ namespace Bookkeeper
 			// aapt resource value: 0x7f040013
 			public const int amount_edit_text = 2130968595;
 			
+			// aapt resource value: 0x7f04000a
+			public const int checkbox_expense = 2130968586;
+			
 			// aapt resource value: 0x7f040009
 			public const int checkbox_income = 2130968585;
-			
-			// aapt resource value: 0x7f04000a
-			public const int checkbox_outcome = 2130968586;
 			
 			// aapt resource value: 0x7f040006
 			public const int create_report_btn = 2130968582;
