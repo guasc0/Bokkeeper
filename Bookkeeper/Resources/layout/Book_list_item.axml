@@ -6,23 +6,26 @@
     <TextView
         android:text="123"
         android:id="@+id/date"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:textSize="15sp"
-        android:layout_marginLeft="2dp" />
+        android:textSize="17sp"
+        android:layout_marginLeft="2dp"
+        android:gravity="left" />
     <TextView
         android:text="bok"
         android:id="@+id/description"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:textSize="15sp" />
+        android:textSize="17sp"
+        android:gravity="left" />
     <TextView
         android:id="@+id/ammount"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:textSize="15sp"
-        android:text="dsfsdf" />
+        android:textSize="17sp"
+        android:text="dsfsdf"
+        android:gravity="left" />
 </LinearLayout>

@@ -9,20 +9,11 @@ namespace Bookkeeper
 
 	public class BookKeeperManager
 	{
-		//public List<Entry> Entries { get; private set;}
-		//public List<TaxRate> TaxRates { get; private set;}
-		//public List<Account> MoneyAccount { get; private set;}
-		//public List<Account> IncomeAccount { get; private set;}
-		//public List<Account> ExpenseAccount { get; private set;}
-
+		
 		SQLiteConnection db;
-
 		string pathToDb = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
 
-
 		private static BookKeeperManager instance;
-
-
 
 		private BookKeeperManager()
 		{
@@ -34,15 +25,14 @@ namespace Bookkeeper
 
 			if (!db.Table<Account>().Any()) 
 			{ 
-				db.Insert(new Account { Name = "Fotbollsskor", Type = "income", Number = 3020 });
-				db.Insert(new Account { Name = "Båt", Type = "income", Number = 3001 });
-				db.Insert(new Account { Name = "Cykel", Type = "income", Number = 3002 });
+				db.Insert(new Account { Name = "Försäljning Bil", Type = "income", Number = 3020 });
+				db.Insert(new Account { Name = "Försäljning Reservdelar", Type = "income", Number = 3001 });
 
-				db.Insert(new Account { Name = "Virke", Type = "expense", Number = 2000 });
-				db.Insert(new Account { Name = "Färg", Type = "expense", Number = 2001 });
-				db.Insert(new Account { Name = "Verktyg", Type = "expense", Number = 2002 });
+				db.Insert(new Account { Name = "Köp Bil", Type = "expense", Number = 2000 });
+				db.Insert(new Account { Name = "Köp Reservdelar", Type = "expense", Number = 2001 });
 
-				db.Insert(new Account { Name = "Kassa", Type = "MoneyAccount", Number = 1910});
+				db.Insert(new Account { Name = "Kontant betalning", Type = "MoneyAccount", Number = 1910});
+				db.Insert(new Account { Name = "Kort betalning", Type = "MoneyAccount", Number = 1912 });
 
 				db.Insert(new TaxRate { Tax = 0.06 });
 				db.Insert(new TaxRate { Tax = 0.12 });
@@ -95,21 +85,20 @@ namespace Bookkeeper
 		{
 			
 			db.Insert(e);
-			Console.WriteLine(e.ToString());
 		}
 
 		public string getTaxReport() 
 		{
-			var taxReport = BookKeeperManager.instance.getEntries().Select(e => string.Format(e.Date.ToString("yyyy-MM-dd")
-			                                                                                  + " "
-																							  + e.Description + " " +
+			var taxReport = getEntries().Select(e => 
+			string.Format(e.Date.ToString("*************************************\nyyyy-MM-dd")
+			                                                                                  + "   "
+																							  + e.Description + "   " +
 			                                                                                  (e.isIncome ? 
 			                                                                                   (e.Ammount * e.TaxRateId)
-			                                                                                   :(e.Ammount * e.TaxRateId)*-1)));
+			                                                                                   :(e.Ammount * e.TaxRateId)*-1) + ":-"));
 
 			return string.Join("\n", taxReport);
 		}
-
 
 	}
 }

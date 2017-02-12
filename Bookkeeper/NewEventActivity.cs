@@ -22,7 +22,7 @@ namespace Bookkeeper
 		TaxRate tx;
 		DateTime dateTime;
 		TextView dateDisplay;
-		EditText description, ammount, totalAmmountWithoutTax;
+		EditText description, ammount;
 		Button dateSelectButton, addEntry;
 		RadioButton checkIncome;
 		RadioButton checkOutcome;
@@ -30,7 +30,7 @@ namespace Bookkeeper
 		string stDescription = "";
 		bool income = true;
 		int intAmmount, typeAccount, moneyAccount; 
-		double taxRate;
+		double taxRate, tempTax;
 
 		Spinner accountSpinner, typeSpinner, taxSpinner;
 		 
@@ -54,7 +54,6 @@ namespace Bookkeeper
 			description = FindViewById<EditText>(Resource.Id.description_text_view);
 			ammount = FindViewById<EditText>(Resource.Id.amount_edit_text);
 
-			//setStartAccount();
 			setTaxSpinner();
 			setTypeSpinner(income);
 			setMoneyAccountSpinner();
@@ -74,6 +73,7 @@ namespace Bookkeeper
 					setTypeSpinner(income = false);
 				}
 			};
+
 
 			addEntry.Click += delegate
 			{
@@ -162,11 +162,7 @@ namespace Bookkeeper
 			}
 		
 		}
-
-		public void calculateTotalSum() 
-		{
 			
-		}
 
 	}
 }

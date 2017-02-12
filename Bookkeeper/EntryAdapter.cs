@@ -13,17 +13,12 @@ namespace Bookkeeper
 	{
 		
 		Activity context;
-		//List<Entry> entries;
-		TextView t1;
 
-		//SQLiteConnection db;
-		string pathToDb = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
 
 		public List<Entry> Entries 
 		{ 
 			get 
 			{ 
-				//db = new SQLiteConnection(pathToDb + @"\database.db");
 				return BookKeeperManager.Instance.getEntries();
 			}
 		}
@@ -56,12 +51,16 @@ namespace Bookkeeper
 
 		public override View GetView(int position, View convertView, ViewGroup parent)
 		{
+
 			View view = convertView ?? context.LayoutInflater.Inflate(Resource.Layout.Book_list_item, parent, false);
-
-
 			view.FindViewById<TextView>(Resource.Id.date).Text = Entries[position].Date.ToString("yyyy-MM-dd");
 			view.FindViewById<TextView>(Resource.Id.description).Text = Entries[position].Description;
-			view.FindViewById<TextView>(Resource.Id.ammount).Text = Entries[position].Ammount + "";
+
+			TextView ammount = view.FindViewById<TextView>(Resource.Id.ammount);
+			ammount.Text = Entries[position].Ammount + ":-";
+
+			ammount.SetTextColor(Entries[position].isIncome ? Color.Green : Color.Red);
+
 			return view;
 		}
 	}

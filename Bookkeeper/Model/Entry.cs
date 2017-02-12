@@ -17,8 +17,7 @@ namespace Bookkeeper
 
 		public Entry()
 		{
-			
-
+		
 		}
 
 		public override string ToString()
