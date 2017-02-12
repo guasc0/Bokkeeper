@@ -83,6 +83,10 @@ namespace Bookkeeper
 
 				BookKeeperManager.Instance.AddEntry(e);
 
+				dateDisplay.Text = "Datum";
+				description.Text = "";
+				ammount.Text = "";
+
 			};
 
 		}
